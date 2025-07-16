@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# next-mp-front
 
-## Getting Started
+Фронтенд для сервиса поиска вакансий на Next.js с архитектурой FSD, поддержкой темной/светлой темы и интернационализации.
 
-First, run the development server:
+## Пошаговый план реализации
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Инициализация проекта Next.js с TypeScript и TailwindCSS
+2. Настройка архитектуры FSD (директории: app, shared, entities, features, widgets, pages)
+3. Подключение TailwindCSS, настройка темной/светлой темы через Tailwind и Zustand
+4. Настройка Zustand для глобального состояния (в том числе для темы)
+5. Подключение и настройка i18next и react-i18next для интернационализации
+6. Создание базовой структуры страниц и компонентов (Header, Footer, Layout)
+7. Добавление переключателя темы и языка
+8. Документирование структуры и основных решений
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Архитектура
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **src/app** — роутинг и layout
+- **src/shared** — общие компоненты, утилиты, темы, i18n
+- **src/entities** — бизнес-сущности (например, пользователь, вакансия)
+- **src/features** — фичи (например, фильтр вакансий)
+- **src/widgets** — крупные виджеты (например, список вакансий)
+- **src/pages** — страницы (если потребуется)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Технологии
 
-## Learn More
+- Next.js (App Router, TypeScript)
+- TailwindCSS (темная/светлая тема)
+- Zustand (глобальное состояние)
+- i18next, react-i18next (интернационализация)
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Документация и структура будут дополняться по мере реализации.
