@@ -1,35 +1,36 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { useThemeStore, useThemeSync, Theme } from "./theme";
+import '../shared/i18n';
+import { useEffect, useRef, useState } from 'react';
+import { useThemeStore, useThemeSync, Theme } from './theme';
 
 interface ThemeProviderProps {
-  children: React.ReactNode;
-  initialTheme?: Theme;
+    children: React.ReactNode;
+    initialTheme?: Theme;
 }
 
 export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
-  const initialized = useRef(false);
-  const { theme, setTheme } = useThemeStore();
-  useThemeSync();
-  const [isHydrated, setIsHydrated] = useState(false);
+    const initialized = useRef(false);
+    const { theme, setTheme } = useThemeStore();
+    useThemeSync();
+    const [isHydrated, setIsHydrated] = useState(false);
 
-  useEffect(() => {
-    if (initialTheme && !initialized.current) {
-      setTheme(initialTheme);
-      initialized.current = true;
-    }
-    setIsHydrated(true);
-  }, [initialTheme, setTheme]);
+    useEffect(() => {
+        if (initialTheme && !initialized.current) {
+            setTheme(initialTheme);
+            initialized.current = true;
+        }
+        setIsHydrated(true);
+    }, [initialTheme, setTheme]);
 
-  useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-  }, [theme]);
+    useEffect(() => {
+        document.documentElement.classList.remove('light', 'dark');
+        document.documentElement.classList.add(theme);
+    }, [theme]);
 
-  if (!isHydrated) return null;
+    if (!isHydrated) return null;
 
-  return children;
+    return children;
 }
 
 /**

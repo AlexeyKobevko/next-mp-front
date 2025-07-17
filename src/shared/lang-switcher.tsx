@@ -1,32 +1,36 @@
-"use client";
+'use client';
 
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 
 export function LangSwitcher() {
-  const { i18n } = useTranslation();
+    const { i18n } = useTranslation();
 
-  function handleChange(lang: string) {
-    void i18n.changeLanguage(lang);
-  }
+    if (typeof i18n.changeLanguage !== 'function') {
+        return null;
+    }
 
-  return (
-    <div className="flex gap-2">
-      <button
-        className={i18n.language === "ru" ? "font-bold underline" : ""}
-        onClick={() => handleChange("ru")}
-        type="button"
-      >
-        RU
-      </button>
-      <button
-        className={i18n.language === "en" ? "font-bold underline" : ""}
-        onClick={() => handleChange("en")}
-        type="button"
-      >
-        EN
-      </button>
-    </div>
-  );
+    function handleChange(lang: string) {
+        void i18n.changeLanguage(lang);
+    }
+
+    return (
+        <div className="flex gap-2">
+            <button
+                className={i18n.language === 'ru' ? 'font-bold underline' : ''}
+                onClick={() => handleChange('ru')}
+                type="button"
+            >
+                RU
+            </button>
+            <button
+                className={i18n.language === 'en' ? 'font-bold underline' : ''}
+                onClick={() => handleChange('en')}
+                type="button"
+            >
+                EN
+            </button>
+        </div>
+    );
 }
 
 /**
