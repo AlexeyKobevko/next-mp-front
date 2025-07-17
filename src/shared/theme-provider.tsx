@@ -12,7 +12,9 @@ interface ThemeProviderProps {
 export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
     const initialized = useRef(false);
     const { theme, setTheme } = useThemeStore();
+
     useThemeSync();
+
     const [isHydrated, setIsHydrated] = useState(false);
 
     useEffect(() => {

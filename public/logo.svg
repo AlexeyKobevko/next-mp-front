@@ -1,0 +1,6 @@
+<svg width="320" height="80" viewBox="0 0 320 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="8" width="64" height="64" rx="20" fill="#132136"/>
+  <text x="32" y="58" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="bold" fill="#EAE3CA" letter-spacing="2">SH</text>
+  <text x="88" y="58" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="bold" fill="#132136">Seller</text>
+  <text x="200" y="58" font-family="Inter, Arial, sans-serif" font-size="40" font-weight="bold" fill="#EAE3CA">Hub</text>
+</svg>

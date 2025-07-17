@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslation } from 'react-i18next';
+import cn from 'classnames';
 
 export function LangSwitcher() {
     const { i18n } = useTranslation();
@@ -16,14 +17,25 @@ export function LangSwitcher() {
     return (
         <div className="flex gap-2">
             <button
-                className={i18n.language === 'ru' ? 'font-bold underline' : ''}
+                // className={i18n.language === 'ru' ? 'font-bold underline' : ''}
+                className={cn(
+                    'border-dark-accent text-light-shades rounded border p-2',
+                    {
+                        'font-bold underline': i18n.language === 'ru',
+                    }
+                )}
                 onClick={() => handleChange('ru')}
                 type="button"
             >
                 RU
             </button>
             <button
-                className={i18n.language === 'en' ? 'font-bold underline' : ''}
+                className={cn(
+                    'border-dark-accent text-light-shades rounded border p-2',
+                    {
+                        'font-bold underline': i18n.language === 'en',
+                    }
+                )}
                 onClick={() => handleChange('en')}
                 type="button"
             >

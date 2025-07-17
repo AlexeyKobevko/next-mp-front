@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+/* html.light {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+} */
+
+/* Дополнительные стили для тем */
+@theme {
+    /* Aths Special. Use this color as the background for your dark-on-light designs, or the text color of an inverted design. */
+    --color-light-shades: oklch(0.9148 0.034 94.07);
+    /* Bay Leaf. Accent colors can be used to bring attention to design elements by contrasting with the rest of the palette. */
+    --color-light-accent: oklch(0.6998 0.079 152.88);
+    /* Driftwood. This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity.This color should be eye-catching but not harsh. It can be liberally applied to your layout as its main identity. */
+    --color-main-color: oklch(0.6108 0.0796 85.62);
+    /* Slate Gray. Another accent color to consider. Not all colors have to be used - sometimes a simple color scheme works best. */
+    --color-dark-accent: oklch(0.6143 0.0277 229.43);
+    /* Big Stone. Use as the text color for dark-on-light designs, or as the background for inverted designs. */
+    --color-dark-shades: oklch(0.2466 0.0448 258.28);
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
