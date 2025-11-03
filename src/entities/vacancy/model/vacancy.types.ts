@@ -5,7 +5,8 @@
 export interface Vacancy {
     id: string;
     title: string;
-    company: string;
+    company: string; // Название компании (для обратной совместимости)
+    companyId?: string; // ID компании для связи с entity Company
     location: string;
     salary?: {
         from?: number;

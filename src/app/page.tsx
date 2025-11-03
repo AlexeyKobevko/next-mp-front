@@ -7,6 +7,7 @@ const demoVacancy: Vacancy = {
     id: '1',
     title: 'Senior Frontend Developer (React/Next.js)',
     company: 'Tech Solutions Inc.',
+    companyId: 'tech-solutions-inc',
     location: 'Москва',
     salary: {
         from: 250000,
