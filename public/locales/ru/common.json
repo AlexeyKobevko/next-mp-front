@@ -1,5 +1,5 @@
 {
-  "hello": "Привет, мир!",
-  "theme": "Тема",
-  "language": "Язык"
+    "search": "Поиск",
+    "nothingFound": "Ничего не найдено",
+    "searchPlaceholder": "Поиск…"
 }

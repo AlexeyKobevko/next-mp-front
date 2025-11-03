@@ -6,6 +6,7 @@ import { ThemeSwitcher } from '../shared/theme-switcher';
 import { cookies } from 'next/headers';
 
 import './app.css';
+import { Container } from '@/shared';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -45,15 +46,18 @@ export default async function RootLayout({
             >
                 <ThemeProvider initialTheme={theme}>
                     <header className="mb-4 flex items-center justify-between border-b bg-black p-4">
-                        <div className="text-main-color text-xl font-bold">
-                            SellerHub
-                        </div>
-                        <div className="flex gap-4">
-                            <LangSwitcher />
-                            <ThemeSwitcher />
-                        </div>
+                        <Container className="flex items-center justify-between">
+                            <div className="text-main-color text-xl font-bold">
+                                SellerHub
+                            </div>
+                            <div className="flex gap-4">
+                                <LangSwitcher />
+                                <ThemeSwitcher />
+                            </div>
+                        </Container>
                     </header>
-                    {children}
+
+                    <Container>{children}</Container>
                 </ThemeProvider>
             </body>
         </html>
