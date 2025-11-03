@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import { ThemeProvider } from '../shared/theme-provider';
-import { ThemeSwitcher } from '../shared/theme-switcher';
+import { ThemeProvider } from '@/shared/lib/providers/theme-provider';
+import { ToggleThemeButton } from '@/features/toggle-theme';
 import { cookies } from 'next/headers';
 
 import './app.css';
@@ -50,8 +50,7 @@ export default async function RootLayout({
                                 SellerHub
                             </div>
                             <div className="flex gap-4">
-                                {/* <LangSwitcher /> */}
-                                <ThemeSwitcher />
+                                <ToggleThemeButton />
                             </div>
                         </Container>
                     </header>

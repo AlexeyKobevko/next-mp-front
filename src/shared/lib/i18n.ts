@@ -24,3 +24,4 @@ export default i18n;
  * Базовая инициализация i18next для Next.js с динамической загрузкой переводов
  * Переводы хранятся в public/locales/{{lng}}/{{ns}}.json
  */
+

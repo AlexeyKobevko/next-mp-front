@@ -1,8 +1,8 @@
 'use client';
 
-import '../shared/i18n';
+import '@/shared/lib/i18n';
 import { useEffect, useRef, useState } from 'react';
-import { useThemeStore, useThemeSync, Theme } from './theme';
+import { useThemeStore, useThemeSync, Theme } from '@/entities/theme';
 
 interface ThemeProviderProps {
     children: React.ReactNode;
@@ -44,3 +44,4 @@ export const ThemeProvider = ({
  * initialTheme — тема, полученная с сервера (SSR)
  * Скрывает children до гидрации, чтобы не было мерцания
  */
+

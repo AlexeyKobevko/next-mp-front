@@ -125,3 +125,4 @@ export function useThemeSync() {
  *
  * useThemeSync() — для синхронизации между вкладками и поддержки системной темы
  */
+

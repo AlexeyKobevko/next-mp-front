@@ -3,7 +3,7 @@
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
-export function LangSwitcher() {
+export function ToggleLanguageButton() {
     const { i18n } = useTranslation();
 
     if (typeof i18n.changeLanguage !== 'function') {
@@ -47,3 +47,4 @@ export function LangSwitcher() {
 /**
  * Компонент для переключения языка (RU/EN)
  */
+

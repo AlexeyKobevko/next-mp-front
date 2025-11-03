@@ -3,14 +3,14 @@
 import { Switch } from '@headlessui/react';
 import cn from 'classnames';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
-import { useThemeStore } from './theme';
+import { useThemeStore } from '@/entities/theme';
 
 /**
  * Компонент для переключения темы (светлая/темная) на основе Headless UI Switch
  * Переключатель включен при тёмной теме, выключен при светлой
  * С эффектом стекла (glass morphism)
  */
-export const ThemeSwitcher = () => {
+export const ToggleThemeButton = () => {
     const { theme, toggleTheme } = useThemeStore();
     const isDark = theme === 'dark';
 
@@ -57,3 +57,4 @@ export const ThemeSwitcher = () => {
         </Switch>
     );
 };
+
