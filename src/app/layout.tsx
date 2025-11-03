@@ -44,7 +44,7 @@ export default async function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} bg-light-shades dark:bg-dark-shades antialiased`}
             >
                 <ThemeProvider initialTheme={theme}>
-                    <header className="mb-4 flex items-center justify-between border-b bg-black p-4">
+                    <header className="flex items-center justify-between border-b bg-black p-4">
                         <Container className="flex items-center justify-between">
                             <div className="text-main-color text-xl font-bold">
                                 SellerHub

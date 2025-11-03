@@ -9,6 +9,7 @@ import {
     BuildingOffice2Icon,
     HomeIcon,
 } from '@heroicons/react/24/outline';
+import Link from 'next/link';
 import cn from 'classnames';
 import type { Vacancy } from '@/entities/vacancy';
 import { formatSalary, formatPublishedDate } from '@/entities/vacancy';
@@ -38,7 +39,8 @@ export const VacancyCard = ({
 }: VacancyCardProps) => {
     const TypeIcon = typeIcons[vacancy.type];
 
-    return (
+    // Если onClick не передан, используем навигацию через Link
+    const cardContent = (
         <article
             onClick={onClick}
             className={cn(
@@ -46,8 +48,7 @@ export const VacancyCard = ({
                 'bg-light-shades dark:bg-dark-shades',
                 'border-dark-accent/20 dark:border-light-accent/20',
                 'shadow-sm transition-all duration-300',
-                // 'hover:-translate-y-1 hover:shadow-lg',
-                // 'cursor-pointer',
+                'cursor-pointer hover:-translate-y-1 hover:shadow-lg',
                 className
             )}
         >
@@ -161,4 +162,15 @@ export const VacancyCard = ({
             </div>
         </article>
     );
+
+    // Если onClick не передан, оборачиваем в Link для навигации
+    if (!onClick) {
+        return (
+            <Link href={`/vacancies/${vacancy.id}`} className="block">
+                {cardContent}
+            </Link>
+        );
+    }
+
+    return cardContent;
 };

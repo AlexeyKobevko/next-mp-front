@@ -47,8 +47,8 @@ export const PopularVacancyCard = ({
             <div className="relative">
                 <VacancyCard
                     vacancy={vacancy}
-                    onClick={onOpenDetails}
-                    className="cursor-pointer group-hover/card:-translate-y-1 group-hover/card:shadow-lg"
+                    onClick={onOpenDetails || undefined}
+                    className="group-hover/card:-translate-y-1 group-hover/card:shadow-lg"
                 />
 
                 {/* Меню действий */}
