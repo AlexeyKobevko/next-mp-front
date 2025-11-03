@@ -5,7 +5,7 @@ export type Theme = 'light' | 'dark';
 
 const THEME_KEY = 'theme';
 
-function getCookie(name: string): string | undefined {
+const getCookie = (name: string): string | undefined => {
     if (typeof document === 'undefined') {
         return undefined;
     }
@@ -15,9 +15,9 @@ function getCookie(name: string): string | undefined {
     );
 
     return match ? decodeURIComponent(match[2]) : undefined;
-}
+};
 
-function setCookie(name: string, value: string, days = 365) {
+const setCookie = (name: string, value: string, days = 365) => {
     if (typeof document === 'undefined') {
         return;
     }
@@ -27,18 +27,18 @@ function setCookie(name: string, value: string, days = 365) {
     document.cookie = `${name}=${encodeURIComponent(
         value
     )}; expires=${expires}; path=/`;
-}
+};
 
-function getSystemTheme(): Theme {
+const getSystemTheme = (): Theme => {
     if (typeof window !== 'undefined' && window.matchMedia) {
         return window.matchMedia('(prefers-color-scheme: dark)').matches
             ? 'dark'
             : 'light';
     }
     return 'light';
-}
+};
 
-function getInitialTheme(): Theme {
+const getInitialTheme = (): Theme => {
     if (typeof window !== 'undefined') {
         const stored = getCookie(THEME_KEY);
 
@@ -50,7 +50,7 @@ function getInitialTheme(): Theme {
     }
 
     return 'light';
-}
+};
 
 interface ThemeState {
     theme: Theme;
@@ -81,28 +81,28 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
 }));
 
 // Синхронизация между вкладками и поддержка системной темы
-export function useThemeSync() {
+export const useThemeSync = () => {
     const { userSelected, setTheme } = useThemeStore();
 
     useEffect(() => {
-        function handleStorage(e: StorageEvent) {
+        const handleStorage = (e: StorageEvent) => {
             if (
                 e.key === THEME_KEY &&
                 (e.newValue === 'dark' || e.newValue === 'light')
             ) {
                 setTheme(e.newValue as Theme);
             }
-        }
+        };
 
         window.addEventListener('storage', handleStorage);
 
         let mql: MediaQueryList | null = null;
 
-        function handleSystemTheme(e: MediaQueryListEvent) {
+        const handleSystemTheme = (e: MediaQueryListEvent) => {
             if (!userSelected) {
                 setTheme(e.matches ? 'dark' : 'light');
             }
-        }
+        };
 
         if (window.matchMedia) {
             mql = window.matchMedia('(prefers-color-scheme: dark)');
@@ -117,7 +117,7 @@ export function useThemeSync() {
             }
         };
     }, [userSelected, setTheme]);
-}
+};
 
 /**
  * Хук для получения текущей темы и функций управления

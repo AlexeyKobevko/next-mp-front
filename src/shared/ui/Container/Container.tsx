@@ -1,20 +1,19 @@
 import { type ComponentPropsWithoutRef } from 'react';
 import cn from 'classnames';
 
-export function Container({
+/**
+ * Контейнер для контента с максимальной шириной 1280px (max-w-7xl)
+ * - Горизонтальное центрирование (mx-auto)
+ * - Отступы по бокам (px-4/6/8)
+ */
+export const Container = ({
     className,
     ...props
-}: ComponentPropsWithoutRef<'div'>) {
+}: ComponentPropsWithoutRef<'div'>) => {
     return (
         <div
             className={cn('mx-auto w-7xl max-w-full px-4', className)}
             {...props}
         />
     );
-}
-
-/**
- * Контейнер для контента с максимальной шириной 1280px (max-w-7xl)
- * - Горизонтальное центрирование (mx-auto)
- * - Отступы по бокам (px-4/6/8)
- */
+};

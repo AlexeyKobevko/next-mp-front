@@ -26,7 +26,7 @@ const SUGGESTIONS = [
  * Компонент формы поиска с автодополнением
  * Использует Headless UI Combobox для доступности и удобства использования
  */
-export function SearchForm() {
+export const SearchForm = () => {
     // Состояние для текущего текста в поле ввода
     const [query, setQuery] = useState('');
     // Состояние для выбранного пользователем элемента из списка подсказок
@@ -142,7 +142,7 @@ export function SearchForm() {
             </Combobox>
         </div>
     );
-}
+};
 
 /**
  * Форма поиска на Headless UI (Combobox) с подсказками

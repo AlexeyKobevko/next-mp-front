@@ -3,16 +3,16 @@
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
-export function ToggleLanguageButton() {
+export const ToggleLanguageButton = () => {
     const { i18n } = useTranslation();
 
     if (typeof i18n.changeLanguage !== 'function') {
         return null;
     }
 
-    function handleChange(lang: string) {
+    const handleChange = (lang: string) => {
         void i18n.changeLanguage(lang);
-    }
+    };
 
     return (
         <div className="flex gap-2">
@@ -42,9 +42,8 @@ export function ToggleLanguageButton() {
             </button>
         </div>
     );
-}
+};
 
 /**
  * Компонент для переключения языка (RU/EN)
  */
-

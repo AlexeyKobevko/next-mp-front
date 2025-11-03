@@ -9,6 +9,12 @@ interface ThemeProviderProps {
     initialTheme?: Theme;
 }
 
+/**
+ * Провайдер темы для Tailwind и Zustand
+ * Оборачивайте приложение для поддержки темной/светлой темы
+ * initialTheme — тема, полученная с сервера (SSR)
+ * Скрывает children до гидрации, чтобы не было мерцания
+ */
 export const ThemeProvider = ({
     children,
     initialTheme,
@@ -33,15 +39,9 @@ export const ThemeProvider = ({
         document.documentElement.classList.add(theme);
     }, [theme]);
 
-    if (!isHydrated) return null;
+    if (!isHydrated) {
+        return null;
+    }
 
     return children;
 };
-
-/**
- * Провайдер темы для Tailwind и Zustand
- * Оборачивайте приложение для поддержки темной/светлой темы
- * initialTheme — тема, полученная с сервера (SSR)
- * Скрывает children до гидрации, чтобы не было мерцания
- */
-
