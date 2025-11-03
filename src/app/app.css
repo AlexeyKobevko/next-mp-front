@@ -1,13 +1,5 @@
 @import 'tailwindcss';
 
-/* html.light {
-    color-scheme: light;
-}
-
-html.dark {
-    color-scheme: dark;
-} */
-
 /* Дополнительные стили для тем */
 @theme {
     /* Aths Special. Use this color as the background for your dark-on-light designs, or the text color of an inverted design. */

@@ -9,7 +9,10 @@ interface ThemeProviderProps {
     initialTheme?: Theme;
 }
 
-export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
+export const ThemeProvider = ({
+    children,
+    initialTheme,
+}: Readonly<ThemeProviderProps>) => {
     const initialized = useRef(false);
     const { theme, setTheme } = useThemeStore();
 
@@ -33,7 +36,7 @@ export function ThemeProvider({ children, initialTheme }: ThemeProviderProps) {
     if (!isHydrated) return null;
 
     return children;
-}
+};
 
 /**
  * Провайдер темы для Tailwind и Zustand

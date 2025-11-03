@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '../shared/theme-provider';
-import { LangSwitcher } from '../shared/lang-switcher';
 import { ThemeSwitcher } from '../shared/theme-switcher';
 import { cookies } from 'next/headers';
 
@@ -51,7 +50,7 @@ export default async function RootLayout({
                                 SellerHub
                             </div>
                             <div className="flex gap-4">
-                                <LangSwitcher />
+                                {/* <LangSwitcher /> */}
                                 <ThemeSwitcher />
                             </div>
                         </Container>

@@ -17,7 +17,6 @@ export function LangSwitcher() {
     return (
         <div className="flex gap-2">
             <button
-                // className={i18n.language === 'ru' ? 'font-bold underline' : ''}
                 className={cn(
                     'border-dark-accent text-light-shades rounded border p-2',
                     {
