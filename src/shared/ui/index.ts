@@ -1,2 +1,2 @@
-export * from './container/Container';
-export * from './vacancy-card/VacancyCard';
+export * from './container';
+export * from './vacancy-card';
