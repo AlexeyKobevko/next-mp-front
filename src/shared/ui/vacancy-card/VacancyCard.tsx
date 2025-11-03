@@ -46,8 +46,8 @@ export const VacancyCard = ({
                 'bg-light-shades dark:bg-dark-shades',
                 'border-dark-accent/20 dark:border-light-accent/20',
                 'shadow-sm transition-all duration-300',
-                'hover:-translate-y-1 hover:shadow-lg',
-                onClick && 'cursor-pointer',
+                // 'hover:-translate-y-1 hover:shadow-lg',
+                // 'cursor-pointer',
                 className
             )}
         >

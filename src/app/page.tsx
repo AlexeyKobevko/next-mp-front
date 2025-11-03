@@ -29,24 +29,23 @@ const demoVacancy: Vacancy = {
 
 export default function Home() {
     return (
-        <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-sans sm:p-20">
-            <main className="row-start-2 w-full space-y-8">
+        <div className="grid min-h-screen gap-16 p-8 pb-20 font-sans sm:p-20">
+            <section>
                 <SearchForm />
+            </section>
 
-                {/* Секция популярных вакансий */}
-                <section className="w-full">
-                    <h2 className="text-dark-shades dark:text-light-shades mb-6 text-2xl font-bold">
-                        Популярные вакансии
-                    </h2>
-                    <PopularVacancyList
-                        vacancies={[demoVacancy]}
-                        // onVacancyClick={(vacancy) => {
-                        //     console.log('Открыть детали вакансии:', vacancy.id);
-                        // }}
-                    />
-                </section>
-            </main>
-            <footer className="row-start-3 flex flex-wrap items-center justify-center gap-[24px]"></footer>
+            {/* Секция популярных вакансий */}
+            <section className="w-full">
+                <h2 className="text-dark-shades dark:text-light-shades mb-6 text-2xl font-bold">
+                    Популярные вакансии
+                </h2>
+                <PopularVacancyList
+                    vacancies={[demoVacancy]}
+                    // onVacancyClick={(vacancy) => {
+                    //     console.log('Открыть детали вакансии:', vacancy.id);
+                    // }}
+                />
+            </section>
         </div>
     );
 }

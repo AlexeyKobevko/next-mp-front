@@ -55,7 +55,8 @@ export default async function RootLayout({
                         </Container>
                     </header>
 
-                    <Container>{children}</Container>
+                    <main>{children}</main>
+                    <footer>123</footer>
                 </ThemeProvider>
             </body>
         </html>

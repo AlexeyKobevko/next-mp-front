@@ -29,32 +29,44 @@ export const PopularVacancyCard = ({
     className,
 }: PopularVacancyCardProps) => {
     return (
-        <div className={cn('relative', className)}>
+        <div className={cn('group/card relative pt-8', className)}>
             {/* Бейдж "Популярная" */}
             <div
                 className={cn(
-                    'absolute -top-3 left-4 z-10 rounded-full px-3 py-1 text-xs font-bold',
+                    'absolute top-0 left-4 rounded-full px-3 py-1 text-xs font-bold',
                     'bg-main-color text-white',
-                    'shadow-lg'
+                    'shadow-lg',
+                    'transition-transform duration-300',
+                    'group-hover/card:-translate-y-1'
                 )}
             >
                 ⭐ Популярная
             </div>
 
             {/* Карточка вакансии */}
-            <div className="relative pt-4">
-                <VacancyCard vacancy={vacancy} onClick={onOpenDetails} />
+            <div className="relative">
+                <VacancyCard
+                    vacancy={vacancy}
+                    onClick={onOpenDetails}
+                    className="cursor-pointer group-hover/card:-translate-y-1 group-hover/card:shadow-lg"
+                />
 
                 {/* Меню действий */}
-                <div className="absolute top-8 right-4">
+                <div
+                    className={cn(
+                        'absolute top-2 right-2',
+                        'transition-transform duration-300 group-hover/card:-translate-y-1'
+                    )}
+                >
                     <Menu as="div" className="relative inline-block text-left">
                         <MenuButton
                             className={cn(
                                 'inline-flex items-center justify-center rounded-full p-2',
                                 'bg-light-shades/50 dark:bg-dark-shades/50',
                                 'hover:bg-light-shades dark:hover:bg-dark-shades',
-                                'focus:ring-main-color focus:ring-2 focus:ring-offset-2 focus:outline-none',
-                                'transition-colors duration-200'
+                                'focus:outline-none',
+                                'transition-colors duration-200',
+                                'cursor-pointer'
                             )}
                             onClick={(e) => e.stopPropagation()}
                         >
