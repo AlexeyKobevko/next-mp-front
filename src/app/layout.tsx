@@ -1,3 +1,4 @@
+import { type ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { ThemeProvider } from '@/shared/lib/providers/theme-provider';
@@ -22,10 +23,13 @@ export const metadata: Metadata = {
     description: 'Поиск вакансий',
 };
 
+/**
+ * Layout с ThemeProvider, переключателями темы и языка
+ */
 export default async function RootLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) {
     // Читаем тему из cookie на сервере
     const cookieStore = await cookies();
@@ -62,7 +66,3 @@ export default async function RootLayout({
         </html>
     );
 }
-
-/**
- * Layout с ThemeProvider, переключателями темы и языка
- */
