@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import {
     Combobox,
     ComboboxInput,
@@ -31,8 +31,15 @@ export const SearchForm = () => {
     const [query, setQuery] = useState('');
     // Состояние для выбранного пользователем элемента из списка подсказок
     const [selected, setSelected] = useState<string | null>(null);
+    // Состояние для отслеживания монтирования (предотвращение ошибок гидрации)
+    const [isMounted, setIsMounted] = useState(false);
 
     const { t } = useTranslation();
+
+    // Предотвращаем ошибку гидрации, используя состояние только после монтирования
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
 
     // Мемоизированный список отфильтрованных подсказок
     // Пересчитывается только при изменении query
@@ -86,9 +93,12 @@ export const SearchForm = () => {
                     */}
                     <ComboboxInput
                         className="block w-full rounded-lg border border-gray-300 bg-white py-3 pr-4 pl-10 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 focus:outline-none sm:text-sm"
-                        placeholder={t('searchPlaceholder')}
+                        placeholder={
+                            isMounted ? t('searchPlaceholder') : 'Поиск…'
+                        }
                         onChange={(e) => setQuery(e.target.value)}
                         displayValue={() => selected ?? query}
+                        suppressHydrationWarning
                     />
 
                     {/* 
@@ -116,7 +126,9 @@ export const SearchForm = () => {
                                 */}
                                 {filtered.length === 0 ? (
                                     <div className="cursor-default px-4 py-2 text-sm text-gray-500 select-none">
-                                        {t('nothingFound')}
+                                        {isMounted
+                                            ? t('nothingFound')
+                                            : 'Ничего не найдено'}
                                     </div>
                                 ) : (
                                     // Рендерим каждую подсказку как отдельный вариант выбора

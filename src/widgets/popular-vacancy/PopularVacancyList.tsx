@@ -1,5 +1,3 @@
-'use client';
-
 import { PopularVacancyCard } from './PopularVacancyCard';
 import type { Vacancy } from '@/entities/vacancy';
 

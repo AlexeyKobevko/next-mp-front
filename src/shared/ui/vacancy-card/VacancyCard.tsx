@@ -1,5 +1,3 @@
-'use client';
-
 import {
     MapPinIcon,
     BuildingOfficeIcon,
@@ -16,7 +14,6 @@ import { formatSalary, formatPublishedDate } from '@/entities/vacancy';
 
 interface VacancyCardProps {
     vacancy: Vacancy;
-    onClick?: () => void;
     className?: string;
 }
 
@@ -32,17 +29,11 @@ const typeLabels = {
     hybrid: 'Гибрид',
 };
 
-export const VacancyCard = ({
-    vacancy,
-    onClick,
-    className,
-}: VacancyCardProps) => {
+export const VacancyCard = ({ vacancy, className }: VacancyCardProps) => {
     const TypeIcon = typeIcons[vacancy.type];
 
-    // Если onClick не передан, используем навигацию через Link
     const cardContent = (
         <article
-            onClick={onClick}
             className={cn(
                 'group relative rounded-lg border p-6',
                 'bg-light-shades dark:bg-dark-shades',
@@ -143,34 +134,14 @@ export const VacancyCard = ({
                         {formatPublishedDate(vacancy.publishedAt)}
                     </span>
                 </div>
-
-                {onClick && (
-                    <button
-                        type="button"
-                        className={cn(
-                            'rounded-md px-4 py-2 text-sm font-medium',
-                            'bg-main-color text-white',
-                            'hover:bg-main-color/90',
-                            'transition-colors duration-200',
-                            'focus:ring-main-color focus:ring-2 focus:ring-offset-2 focus:outline-none',
-                            'dark:focus:ring-offset-dark-shades'
-                        )}
-                    >
-                        Подробнее
-                    </button>
-                )}
             </div>
         </article>
     );
 
-    // Если onClick не передан, оборачиваем в Link для навигации
-    if (!onClick) {
-        return (
-            <Link href={`/vacancies/${vacancy.id}`} className="block">
-                {cardContent}
-            </Link>
-        );
-    }
-
-    return cardContent;
+    // Оборачиваем в Link для навигации
+    return (
+        <Link href={`/vacancies/${vacancy.id}`} className="block">
+            {cardContent}
+        </Link>
+    );
 };

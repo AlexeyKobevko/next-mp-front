@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Switch } from '@headlessui/react';
 import cn from 'classnames';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
@@ -12,12 +13,21 @@ import { useThemeStore } from '@/entities/theme';
  */
 export const ToggleThemeButton = () => {
     const { theme, toggleTheme } = useThemeStore();
-    const isDark = theme === 'dark';
+    const [isMounted, setIsMounted] = useState(false);
+
+    // Предотвращаем ошибку гидрации, используя состояние только после монтирования
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    // Используем значение по умолчанию до монтирования, чтобы избежать несоответствия
+    const isDark = isMounted ? theme === 'dark' : false;
 
     return (
         <Switch
             checked={isDark}
             onChange={toggleTheme}
+            suppressHydrationWarning
             className={cn(
                 // Базовые стили для эффекта стекла
                 'relative inline-flex h-8 w-16 cursor-pointer items-center rounded-full',
@@ -57,4 +67,3 @@ export const ToggleThemeButton = () => {
         </Switch>
     );
 };
-

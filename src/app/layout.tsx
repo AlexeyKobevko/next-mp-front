@@ -32,12 +32,35 @@ export default async function RootLayout({
     children: ReactNode;
 }>) {
     // Читаем тему из cookie на сервере
-    const cookieStore = await cookies();
-    const theme = cookieStore.get('theme')?.value === 'dark' ? 'dark' : 'light';
+    // Используем try-catch для статической генерации
+    let theme: 'light' | 'dark' = 'light';
+    try {
+        const cookieStore = await cookies();
+        theme = cookieStore.get('theme')?.value === 'dark' ? 'dark' : 'light';
+    } catch {
+        // В статической генерации cookies могут быть недоступны
+        theme = 'light';
+    }
 
     return (
-        <html lang="ru" className={theme}>
+        <html lang="ru" className={theme} suppressHydrationWarning>
             <head>
+                {/* Inline script для предотвращения мерцания темы */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                    (function() {
+                        try {
+                            const match = document.cookie.match(new RegExp('(^| )theme=([^;]+)'));
+                            const cookieTheme = match ? decodeURIComponent(match[2]) : null;
+                            const theme = cookieTheme === 'dark' || cookieTheme === 'light' ? cookieTheme : '${theme}';
+                            document.documentElement.classList.remove('light', 'dark');
+                            document.documentElement.classList.add(theme);
+                        } catch (e) {}
+                    })();
+                `,
+                    }}
+                />
                 <link
                     rel="icon"
                     href="/sellerhub-favicon.svg"
